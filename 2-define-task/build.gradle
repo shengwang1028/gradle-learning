@@ -15,10 +15,24 @@ doLast {
 println 'hello3'}
 }
 
-task showTasks {
-println tasks.class
-println tasks.size()
+task showTasks << {
+    println tasks.class
+    println tasks.size()
 }
+
+tasks.create(name: 'hello4') << {
+    println 'hello4'
+}
+
+task hello5(dependsOn:hello4) << {
+    println 'hello5'
+}
+
+task hello6 << {
+    println 'hello6'
+}
+
+hello6.dependsOn hello5
 
 task hello7 << {
 description = "this is hello7"
@@ -40,3 +54,4 @@ println description
 hello9.configure {
 description = "this is hello9"
 }
+
