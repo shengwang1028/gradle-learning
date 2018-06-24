@@ -17,27 +17,15 @@ dependencies {
 
 
 sourceSets {
-    api
     main {
         java {
-            srcDir 'java-sources'
+            srcDirs 'java-sources','src/api/java'
         }
         resources {
-            srcDir 'resources'
+            srcDirs 'resources', 'src/api/resources'
         }
     }
 }
 
-sourceSets {
-    main {
-        compileClasspath = compileClasspath + files(api.output.
-                classesDir)
-    }
-    test {
-        runtimeClasspath = runtimeClasspath + files(api.output.
-                classesDir)
-    }
-}
 
-classes.dependsOn apiClasses
 
